@@ -1053,6 +1053,7 @@ class _DatePickerDialog extends StatefulWidget {
     this.borderRadius,
     this.imageHeader,
     this.description = "",
+    this.btnTextStyle,
     this.fontFamily,
     this.negativeBtn,
     this.positiveBtn,
@@ -1078,6 +1079,7 @@ class _DatePickerDialog extends StatefulWidget {
   final String description;
 
   /// Font
+  final TextStyle btnTextStyle;
   final String fontFamily;
 
   final String negativeBtn;
@@ -1213,6 +1215,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
     final ThemeData theme = Theme.of(context);
     final Widget picker = _buildPicker();
 
+    final TextStyle defaultBtnTextStyle = TextStyle(fontFamily: widget.fontFamily);
     final Widget actions = ButtonActions(
       negativeBtn: widget.negativeBtn,
       onNegative: _handleCancel,
@@ -1221,7 +1224,7 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
       leftBtn: widget.leftBtn,
       onLeftBtn: widget.onLeftBtn,
       localizations: localizations,
-      textStyle: TextStyle(fontFamily: widget.fontFamily),
+      textStyle: widget.btnTextStyle?.merge(defaultBtnTextStyle) ?? defaultBtnTextStyle,
     );
 
     final Dialog dialog = Dialog(
@@ -1374,6 +1377,7 @@ Future<DateTime> showRoundedDatePicker({
   ImageProvider imageHeader,
   String description = "",
   String fontFamily,
+  TextStyle btnTextStyle,
   bool barrierDismissible = false,
   Color background = Colors.transparent,
   String negativeBtn,
@@ -1440,6 +1444,7 @@ Future<DateTime> showRoundedDatePicker({
           imageHeader: imageHeader,
           description: description,
           fontFamily: fontFamily,
+          btnTextStyle: btnTextStyle,
           negativeBtn: negativeBtn,
           positiveBtn: positiveBtn,
           leftBtn: leftBtn,
