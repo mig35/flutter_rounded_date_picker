@@ -58,8 +58,9 @@ class ButtonActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ButtonBar(
-      alignment: leftBtn != null
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: leftBtn != null
           ? MainAxisAlignment.spaceBetween
           : MainAxisAlignment.end,
       children: _buildActionsBtn(leftBtn != null),
