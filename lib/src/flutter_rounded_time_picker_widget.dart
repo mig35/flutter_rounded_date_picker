@@ -938,7 +938,7 @@ class _DialPainter extends CustomPainter {
     @required this.activeRing,
     @required this.textDirection,
     @required this.selectedValue,
-  }) : super(repaint: PaintingBinding.instance.systemFonts);
+  }) : super();
 
   final List<_TappableLabel> primaryOuterLabels;
   final List<_TappableLabel> primaryInnerLabels;
